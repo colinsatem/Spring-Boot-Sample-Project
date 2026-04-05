@@ -18,8 +18,6 @@
 
     <properties>
         <java.version>17</java.version>
-
-        <!-- Disable old Hibernate JPA metamodel processor (breaks on Java 17) -->
         <hibernate.jpa.modelgen.skip>true</hibernate.jpa.modelgen.skip>
     </properties>
 
@@ -28,14 +26,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -56,6 +57,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
 
         <dependency>
@@ -64,7 +66,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Updated Lombok for Java 17 compatibility -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -82,7 +83,6 @@
     <build>
         <plugins>
 
-            <!-- Modern compiler plugin for Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
