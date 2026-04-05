@@ -17,7 +17,10 @@
     <name>BankApplicationBackend</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
+
+        <!-- Disable old Hibernate JPA metamodel processor (breaks on Java 17) -->
+        <hibernate.jpa.modelgen.skip>true</hibernate.jpa.modelgen.skip>
     </properties>
 
     <dependencies>
@@ -56,11 +59,15 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Updated Lombok for Java 17 compatibility -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.30</version>
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -71,7 +78,7 @@
     <build>
         <plugins>
 
-            <!-- ✅ Added for Java 17 compatibility -->
+            <!-- Modern compiler plugin + updated annotation processors -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -79,10 +86,14 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
-                    <compilerArgs>
-                        <arg>--add-opens</arg>
-                        <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-                    </compilerArgs>
+
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.30</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
