@@ -58,7 +58,7 @@ pipeline {
                             url: 'http://34.229.81.67:8080'
                         )
                     ],
-                    war: 'target/demo-0.0.1-SNAPSHOT.war'
+                    war: 'target/*.war'
                 )
             }
         }
